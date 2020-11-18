@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="homepage.css" type="text/css" rel="stylesheet"/>
+    <title>Home Page</title>
+    <!-- JS Script-->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/js/mdb.min.js"></script>
+
+    <!-- CSS Script -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-md heading ">
+                <p class="h2">Corona Virus Data</p> 
+            </div>
+        </div>
+        <p class="grey-text center">---  Powered by the Parsons Twins  ---</p>
+        
+        <div class=" row row-space">
+            <div class="col-md-8">
+                <select class="browser-default custom-select" id="country">
+                </select>
+            </div>
+            <div class="col-md">
+                <p class="last-update">Last Updated: <span id="last-updated"></span></p>
+            </div>
+            
+        </div>
+
+    <!-- Expand  -->
+      <div id="graph-container" class="graph-container">
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-6">
+                
+                <div class="purple-gradient-rot color-block grad-block width hoverable card row-space" data-scroll-to="#conf">
+                    <div class="row">
+                        <div class="col-4">
+                            <h1 class="display-5 white-text responsive font-size" id="tot-conf"></h1>
+                            <p class="sub-head white-text text-size">Confirmed Cases</p>  
+                        </div>
+                        <div class="col-8">
+                            <canvas class="chart" id="confirmed" data-stat="confirmed" data-label="# of Cases"></canvas>
+                        </div>
+                    </div>        
+                </div>
+                
+                
+            </div>
+      <!-- Grid column -->
+      <!-- Grid column -->
+            <div class="col-md-6">
+               
+                    <div class="blue-gradient-rot color-block grad-block width hoverable card grow-left row-space" data-scroll-to="#rec">
+                        <div class="row">
+                            <div class="col-4">
+                                <h1 class="display-5 white-text font-size" id="tot-rec"></h1>
+                                <p class="sub-head white-text text-size">Recovered</p> 
+                            </div>
+                            <div class="col-8">
+                                <canvas class="chart" id="recovered" data-stat="recovered" data-label="# of Recoveries"></canvas>
+                            </div>
+                        </div>      
+                    </div>    
+                
+            </div>
+      <!-- Grid column -->
+        </div>
+
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md">
+                
+                    <div class="peach-gradient-rot color-block grad-block hoverable card row-space" data-scroll-to="#death">
+                        <div class="row">
+                            <div class="col-4">
+                                <h1 class="display-5 white-text font-size" id="tot-deaths"></h1>
+                                <p class="sub-head white-text text-size">Deaths</p>
+                            </div>
+                            <div class="col-8">
+                                <canvas class="chart" id="deaths" data-stat="deaths" data-label="# of Deaths"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+            <!-- Grid column -->
+            <div class="col-md">
+                <p class="note note-success row-space"><strong>About us:</strong> The Parsons Twins are two young guns stuck in isolation and with nothing else to do but build a website!</p>       
+            </div>
+        </div>
+
+        <!-- hitwebcounter Code START -->
+            
+        <!-- Graphs -->
+        <div class="row row-space width-chart" id="conf">
+            <div class="col-1">&nbsp;</div>
+            <div class="col-md-10">
+                <p class="h5 black-text">Confirmed Cases in <span class="country-name"></span></p>
+                <canvas class="chart" id="confirmed-lg" data-stat="confirmed" data-label="# of Cases" data-large="true" data-color="rgba(255,110,196, 0.3)" data-bord="#7873f5"></canvas>
+            </div>
+            <div class="col-1">&nbsp;</div>
+        </div>
+        <div class="row row-space width-chart" id="rec">
+            <div class="col-1">&nbsp;</div>
+            <div class="col-md-10">
+                <p class="h5">Recovered Cases in <span class="country-name"></span></p>
+                <canvas class="chart" id="recovered-lg" data-stat="recovered" data-label="# of Recoveries" data-large="true" data-color="rgb(69,202,252,0.3)" data-bord="#303f9f"></canvas>
+            </div>
+            <div class="col-1">&nbsp;</div>
+        </div>
+
+        <div class="row row-space width-chart" id="death">
+            <div class="col-1">&nbsp;</div>
+            <div class="col-md-10">
+                <p class="h5">Deaths in <span class="country-name"></span></p>
+                <canvas class="chart" id="deaths-lg" data-stat="deaths" data-label="# of Deaths" data-large="true" data-color="rgb(255,216,111,0.5)" data-bord="#fc6262"></canvas>
+            </div>
+            <div class="col-1">&nbsp;</div>
+        </div>
+      
+       
+      
+        
+            <img class="counter" src="https://hitwebcounter.com/counter/counter.php?page=7213730&style=0008&nbdigits=5&type=page&initCount=0" title="User Stats" Alt="PHP Hits Count"   border="0" >
+        
+    
+    
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/countup@1.8.2/dist/countUp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src='graph.js'></script>
+    <script src='scroll.js'></script>
+    
+    
+</body>
+</html>
